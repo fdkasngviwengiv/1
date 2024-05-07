@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp32
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rnd = new Random();
+            string[] letters = { "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"};
+            string[] digits = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "0", "_", "+" };
+
+            int lenPass = 12;
+
+            string[] resultPassword = new string[lenPass];
+
+            int index = 0;
+
+            for (int i = 0; i < lenPass; i++)
+            {
+                index = rnd.Next(0, 2);
+
+                if (index == 0)
+                {
+                    index = rnd.Next(0, letters.Length - 1);
+                    resultPassword[i] = letters[i];
+                    string d = resultPassword[i];
+                    resultPassword[i] = d.ToUpper();
+                }
+                else
+                {
+                    index = rnd.Next(0, letters.Length - 1);
+                    resultPassword[i] = digits[i];
+                }
+            }
+            Console.Write("Новый пароль - ");
+            for (int i = 0; i < lenPass; i++)
+            {
+                Console.Write(resultPassword[i]);
+            }
+            Console.WriteLine();   
+        }       
+    }
+}
